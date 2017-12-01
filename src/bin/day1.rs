@@ -1,3 +1,5 @@
+#![feature(test)]
+extern crate test;
 use std::io;
 
 /// Converts a string of numbers to a vector of digits
@@ -62,10 +64,10 @@ fn main() {
 
 #[cfg(test)]
 mod day1_tests {
+    // Import benchmarking stuff
+    use test::Bencher; 
     // Import needed functions
-    use string_to_digits;
-    use solve_part1;
-    use solve_part2;
+    use super::{string_to_digits, solve_part1, solve_part2};
 
     #[test]
     /// Test the digit converter
@@ -98,5 +100,17 @@ mod day1_tests {
         assert_eq!(solve_part2(&string_to_digits("123425")), 4);
         assert_eq!(solve_part2(&string_to_digits("123123")), 12);
         assert_eq!(solve_part2(&string_to_digits("12131415")), 4);
+    }
+    #[bench]
+    /// Bechmarks solution for part1
+    fn bench_part1(bencher: &mut Bencher) {
+        // Benchmark tests
+        bencher.iter(|| solve_part1(&string_to_digits("45729833394480029485773847583233774388391221221224")));
+    }
+    #[bench]
+    /// Bechmarks solution for part2
+    fn bench_part2(bencher: &mut Bencher) {
+        // Benchmark tests
+        bencher.iter(|| solve_part2(&string_to_digits("45729833394480029485773847583233774388391221221224")));
     }
 }
