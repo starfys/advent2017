@@ -55,8 +55,8 @@ fn main() {
     // Convert string to a vector of digits
     let captcha: Vec<u32> = string_to_digits(&captcha.trim());
     // Solve the first part
-    // Won't be caught off-guard with a multiple-gigabyte file ;)
     let part1_answer: u64 = solve_part1(&captcha);
+    // Solve the second part
     let part2_answer: u64 = solve_part2(&captcha);
     println!("Part 1: {}", part1_answer);
     println!("Part 2: {}", part2_answer);
@@ -64,14 +64,14 @@ fn main() {
 
 
 #[cfg(test)]
-mod day1_tests {
+mod day1 {
     use rand;
     use rand::Rng;
     use super::{string_to_digits, solve_part1, solve_part2};
     use test::Bencher;
 
     /// The static test size for benchmarks
-    const TEST_INPUT_SIZE: usize = 1000;
+    const TEST_INPUT_SIZE: usize = 100;
 
     /// Used to generate random inputs for benchmarks
     fn generate_random_input<R: Rng>(rng: &mut R, size: usize) -> Vec<u32> {
