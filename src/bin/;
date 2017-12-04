@@ -1,0 +1,24 @@
+use std::collections::HashSet;
+use std::io;
+use std::io::prelude::*;
+use std::iter::FromIterator;
+
+fn main() {
+    let stdin = io::stdin();
+    // Map over stdin's lines
+    let result: Vec<i32> = stdin
+        .lock()
+        .lines()
+        .map(|line| {
+            // Unwrap the line
+            let line: String = match line {
+                Ok(line) => line,
+                Err(error) => panic!("Failed to get line from stdin. Error: {}", error),
+            };
+            // Trim the line and create a split iterator
+            let line = line.trim().split(" ");
+            // Build a hashset
+            let words: HashSet<&str> = HashSet::from_iter(line);
+        })
+        .collect();
+}
