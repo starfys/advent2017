@@ -17,14 +17,15 @@ fn string_to_digits(input: &str) -> Vec<u32> {
         .collect()
 }
 /// Solves part 1 of the puzzle
-fn solve_part1(captcha: &Vec<u32>) -> u64 {
+fn solve_part1(captcha: &[u32]) -> u64 {
     // Store sum as u64 so we have more space
     let mut sum: u64 = 0;
     // Iterate over the list and do both parts
     for (index, digit) in captcha.iter().enumerate() {
         // Check the next digit
         if *digit == captcha[(index + 1) % captcha.len()] {
-            sum += *digit as u64;
+            sum += u64::from(*digit);
+
         }
     }
     // Return the sum
@@ -32,14 +33,14 @@ fn solve_part1(captcha: &Vec<u32>) -> u64 {
 }
 
 /// Solves part 2 of the puzzle
-fn solve_part2(captcha: &Vec<u32>) -> u64 {
+fn solve_part2(captcha: &[u32]) -> u64 {
     // Store sum as u64 so we have more space
     let mut sum: u64 = 0;
     // Iterate over the list and do both parts
     for (index, digit) in captcha.iter().enumerate() {
         // Check the next digit
         if *digit == captcha[(index + (captcha.len() / 2)) % captcha.len()] {
-            sum += *digit as u64;
+            sum += u64::from(*digit);
         }
     }
     // Return the sum
@@ -53,7 +54,7 @@ fn main() {
         Err(error) => panic!("Failed to read a line from stdin. Error: {}", error),
     }
     // Convert string to a vector of digits
-    let captcha: Vec<u32> = string_to_digits(&captcha.trim());
+    let captcha: Vec<u32> = string_to_digits(captcha.trim());
     // Solve the first part
     let part1_answer: u64 = solve_part1(&captcha);
     // Solve the second part
