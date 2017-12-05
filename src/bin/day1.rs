@@ -72,7 +72,7 @@ mod day1 {
     use test::Bencher;
 
     /// The static test size for benchmarks
-    const TEST_INPUT_SIZE: usize = 100;
+    const TEST_INPUT_SIZE: usize = 10;
 
     /// Used to generate random inputs for benchmarks
     fn generate_random_input<R: Rng>(rng: &mut R, size: usize) -> Vec<u32> {

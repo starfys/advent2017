@@ -1,3 +1,5 @@
+#![feature(test)]
+extern crate test;
 use std::io;
 use std::io::prelude::*;
 
@@ -63,4 +65,32 @@ fn main() {
         .collect();
     println!("Part1: {}", solve_part1(&original_offsets));
     println!("Part2: {}", solve_part2(&original_offsets));
+}
+
+// Benchmarks
+#[cfg(test)]
+mod day5 {
+    use super::*;
+    use test::Bencher;
+    #[test]
+    /// Tests part1
+    fn test_part1() {
+        assert_eq!(solve_part1(&vec![0, 3, 0, 1, -3]), 5);
+    }
+    #[test]
+    /// Tests part2
+    fn test_part2() {
+        assert_eq!(solve_part2(&vec![0, 3, 0, 1, -3]), 10);
+    }
+    #[bench]
+    /// Benchmarks part1
+    fn bench_part1(bencher: &mut Bencher) {
+        bencher.iter(|| solve_part1(&vec![0, 3, 0, 1, -3]))
+    }
+
+    #[bench]
+    /// Benchmarks part2
+    fn bench_part2(bencher: &mut Bencher) {
+        bencher.iter(|| solve_part2(&vec![0, 3, 0, 1, -3]))
+    }
 }
