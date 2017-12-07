@@ -137,8 +137,4 @@ fn main() {
     // Use the graph and the root node to solve the puzzle
     calculate_total_weight(&mut graph, root_node);
     // Now, iterate over the graph's children's weight
-    //let mut cur_node: String = root_node;
-    //loop {
-    //    for child in
-    //}
 }
