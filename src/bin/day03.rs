@@ -17,7 +17,20 @@ use std::io;
 
 /// Solves day 3 part 1
 fn solve_part1(input: u64) -> u64 {
-    input
+    // Determine the matrix size
+    let mut matrix_size: usize = ((input as f64).sqrt().ceil().powi(2)) as usize;
+    if matrix_size % 2 == 0 {
+        matrix_size += 1;
+    }
+    // Create a matrix
+    let spiral_matrix: Vec<Vec<u64>> = vec![vec![0; matrix_size]; matrix_size];
+    // Start at the middle of the spiral
+    let home_row: usize = matrix_size / 2;
+    let home_col: usize = matrix_size / 2;
+    // Current row
+    let cur_row: usize = home_row;
+    let cur_col: usize = home_col;
+    0
 }
 /// Solves day 3 part 2
 fn solve_part2(input: u64) -> u64 {

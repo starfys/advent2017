@@ -5,3 +5,4 @@ authors = ["Steven Sheffey"]
 
 [dependencies]
 rand = "0.3"
+nom = "3.2.1"
