@@ -4,5 +4,6 @@ version = "0.1.0"
 authors = ["Steven Sheffey"]
 
 [dependencies]
-rand = "0.3"
+hex = "0.3.1"
 nom = "3.2.1"
+rand = "0.3"
